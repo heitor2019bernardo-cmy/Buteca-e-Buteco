@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buteca e o mais pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Container de corações caindo -->
+    <div id="hearts-container"></div>
+
+    <!-- Menu fixo -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-brand">❤️ Laroca e Pitoco</div>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+            <span class="hamburger"></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#contador" class="nav-link">Contador</a></li>
+            <li><a href="#galeria" class="nav-link">Galeria</a></li>
+            <li><a href="#memorias" class="nav-link">Memórias</a></li>
+            <li><a href="#quiz" class="nav-link">Quiz</a></li>
+            <li><a href="#final" class="nav-link">Final</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-hearts">
+                <span class="heart-float">❤️</span>
+                <span class="heart-float delay-1">💖</span>
+                <span class="heart-float delay-2">💕</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="hero-line">Laroca</span>
+                <span class="hero-ampersand">&</span>
+                <span class="hero-line">Pitoco</span>
+            </h1>
+            <p class="hero-subtitle">Cada batida do meu coração sussurra o seu nome</p>
+            <p class="hero-date">Desde 27 de Setembro de 2025</p>
+            <a href="#contador" class="btn-hero">
+                <span>Começar nossa história</span>
+                <span class="btn-arrow">↓</span>
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Role para descobrir</span>
+        </div>
+    </section>
+
+    <!-- ===== CONTADOR ===== -->
+    <section id="contador" class="section contador-section">
+        <div class="container">
+            <h2 class="section-title reveal">Estamos juntos há</h2>
+            <div class="contador-wrapper reveal">
+                <div class="contador-box">
+                    <div class="contador-numero" id="contador-dias">0</div>
+                    <div class="contador-label">Dias</div>
+                </div>
+                <div class="contador-separador">:</div>
+                <div class="contador-box">
+                    <div class="contador-numero" id="contador-horas">0</div>
+                    <div class="contador-label">Horas</div>
+                </div>
+                <div class="contador-separador">:</div>
+                <div class="contador-box">
+                    <div class="contador-numero" id="contador-minutos">0</div>
+                    <div class="contador-label">Minutos</div>
+                </div>
+                <div class="contador-separador">:</div>
+                <div class="contador-box">
+                    <div class="contador-numero" id="contador-segundos">0</div>
+                    <div class="contador-label">Segundos</div>
+                </div>
+            </div>
+            <p class="contador-data reveal">Desde 27 de setembro de 2025 às 16:00</p>
+        </div>
+    </section>
+
+    <!-- ===== BOTÕES INTERATIVOS ===== -->
+    <section class="section botoes-section">
+        <div class="container">
+            <div class="botoes-grid reveal">
+                <button class="btn-interativo btn-amor" onclick="mostrarMensagemAmor()">
+                    <span class="btn-icon">❤️</span>
+                    <span class="btn-texto">Eu te amo</span>
+                </button>
+                <button class="btn-interativo btn-fotos" onclick="scrollToSection('galeria')">
+                    <span class="btn-icon">📸</span>
+                    <span class="btn-texto">Nossas Fotos</span>
+                </button>
+                <button class="btn-interativo btn-musica" id="btn-musica-toggle" onclick="toggleMusica()">
+                    <span class="btn-icon" id="icon-musica">▶️</span>
+                    <span class="btn-texto" id="texto-musica">Nossa Música</span>
+                </button>
+                <button class="btn-interativo btn-surpresa" onclick="scrollToSection('final')">
+                    <span class="btn-icon">🎁</span>
+                    <span class="btn-texto">Surpresa</span>
+                </button>
+            </div>
+        </div>
+        <audio id="audio-player" loop>
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
+    </section>
+
+    <!-- Mensagem de amor popup -->
+    <div id="mensagem-amor-overlay" class="overlay hidden">
+        <div class="mensagem-amor-box">
+            <button class="close-btn" onclick="fecharMensagemAmor()">✕</button>
+            <div class="mensagem-amor-hearts">💖💕💘</div>
+            <h3>Para Você, Meu Amor</h3>
+            <p>Em um mundo cheio de momentos passageiros, você é a minha eternidade. Cada dia ao seu lado é um presente que agradeço ao universo. Te amo mais que ontem e menos que amanhã.</p>
+            <div class="mensagem-amor-assinatura">— Pitoco 💕</div>
+        </div>
+    </div>
+
+    <!-- ===== GALERIA ===== -->
+    <section id="galeria" class="section galeria-section">
+        <div class="container">
+            <h2 class="section-title reveal">Nossos Momentos</h2>
+            <p class="section-subtitle reveal">Cada foto guarda um pedacinho do nosso amor</p>
+            <div class="galeria-grid reveal">
+                <div class="galeria-item" onclick="abrirLightbox(0)">
+                    <div class="galeria-placeholder">
+                        <span class="placeholder-icon">💕</span>
+                        <span class="placeholder-text">Foto 1</span>
+                    </div>
+                    <div class="galeria-overlay">
+                        <span class="galeria-zoom">🔍</span>
+                    </div>
+                    <p class="galeria-legenda">Nosso primeiro momento juntos</p>
+                </div>
+                <div class="galeria-item" onclick="abrirLightbox(1)">
+                    <div class="galeria-placeholder">
+                        <span class="placeholder-icon">💖</span>
+                        <span class="placeholder-text">Foto 2</span>
+                    </div>
+                    <div class="galeria-overlay">
+                        <span class="galeria-zoom">🔍</span>
+                    </div>
+                    <p class="galeria-legenda">Sorrisos que iluminam meu dia</p>
+                </div>
+                <div class="galeria-item" onclick="abrirLightbox(2)">
+                    <div class="galeria-placeholder">
+                        <span class="placeholder-icon">💘</span>
+                        <span class="placeholder-text">Foto 3</span>
+                    </div>
+                    <div class="galeria-overlay">
+                        <span class="galeria-zoom">🔍</span>
+                    </div>
+                    <p class="galeria-legenda">Aventuras que vivemos</p>
+                </div>
+                <div class="galeria-item" onclick="abrirLightbox(3)">
+                    <div class="galeria-placeholder">
+                        <span class="placeholder-icon">💝</span>
+                        <span class="placeholder-text">Foto 4</span>
+                    </div>
+                    <div class="galeria-overlay">
+                        <span class="galeria-zoom">🔍</span>
+                    </div>
+                    <p class="galeria-legenda">Olhares que dizem tudo</p>
+                </div>
+                <div class="galeria-item" onclick="abrirLightbox(4)">
+                    <div class="galeria-placeholder">
+                        <span class="placeholder-icon">💗</span>
+                        <span class="placeholder-text">Foto 5</span>
+                    </div>
+                    <div class="galeria-overlay">
+                        <span class="galeria-zoom">🔍</span>
+                    </div>
+                    <p class="galeria-legenda">Momentos inesquecíveis</p>
+                </div>
+                <div class="galeria-item" onclick="abrirLightbox(5)">
+                    <div class="galeria-placeholder">
+                        <span class="placeholder-icon">🥰</span>
+                        <span class="placeholder-text">Foto 6</span>
+                    </div>
+                    <div class="galeria-overlay">
+                        <span class="galeria-zoom">🔍</span>
+                    </div>
+                    <p class="galeria-legenda">Nosso amor em cada detalhe</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox hidden">
+        <button class="lightbox-close" onclick="fecharLightbox()">✕</button>
+        <button class="lightbox-nav lightbox-prev" onclick="navegarLightbox(-1)">‹</button>
+        <div class="lightbox-content">
+            <div class="lightbox-placeholder" id="lightbox-img">
+                <span id="lightbox-placeholder-text">💕</span>
+            </div>
+            <p class="lightbox-caption" id="lightbox-caption"></p>
+        </div>
+        <button class="lightbox-nav lightbox-next" onclick="navegarLightbox(1)">›</button>
+    </div>
+
+    <!-- ===== MEMÓRIAS / TIMELINE ===== -->
+    <section id="memorias" class="section memorias-section">
+        <div class="container">
+            <h2 class="section-title reveal">Nossas Memórias</h2>
+            <p class="section-subtitle reveal">Cada capítulo da nossa história é escrito com amor</p>
+            <div class="timeline" id="timeline">
+                <!-- Timeline items gerados via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== QUIZ ===== -->
+    <section id="quiz" class="section quiz-section">
+        <div class="container">
+            <h2 class="section-title reveal">Quiz do Casal</h2>
+            <p class="section-subtitle reveal">Quem conhece mais nosso amor?</p>
+            <div class="quiz-container reveal">
+                <div class="quiz-inicio" id="quiz-inicio">
+                    <div class="quiz-icon">🎯</div>
+                    <h3>Teste seus conhecimentos!</h3>
+                    <p>Responda as perguntas e descubra o quanto você conhece a nossa história de amor.</p>
+                    <button class="btn-principal" onclick="iniciarQuiz()">Começar Quiz</button>
+                </div>
+                <div class="quiz-pergunta hidden" id="quiz-pergunta">
+                    <div class="quiz-progresso">
+                        <div class="quiz-progresso-barra" id="quiz-progresso"></div>
+                    </div>
+                    <div class="quiz-numero" id="quiz-numero">Pergunta 1 de 5</div>
+                    <h3 class="quiz-pergunta-texto" id="quiz-pergunta-texto"></h3>
+                    <div class="quiz-alternativas" id="quiz-alternativas"></div>
+                </div>
+                <div class="quiz-resultado hidden" id="quiz-resultado">
+                    <div class="quiz-resultado-emoji" id="quiz-resultado-emoji">🎉</div>
+                    <h3 id="quiz-resultado-titulo">Parabéns!</h3>
+                    <p id="quiz-resultado-texto"></p>
+                    <div class="quiz-resultado-pontuacao">
+                        <span id="quiz-pontuacao">0</span> / <span id="quiz-total">5</span>
+                    </div>
+                    <button class="btn-principal" onclick="reiniciarQuiz()">Jogar Novamente</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SURPRESA FINAL ===== -->
+    <section id="final" class="section final-section">
+        <div class="container">
+            <div class="final-content reveal">
+                <div class="final-hearts">
+                    <span>💕</span><span>💖</span><span>💘</span><span>💝</span><span>💗</span>
+                </div>
+                <h2 class="final-title">Meu Amor por Você</h2>
+                <p class="final-texto">
+                    Em todas as formas que o amor pode existir, você é a minha favorita. 
+                    Não há palavras suficientes para descrever o que sinto, mas saiba que 
+                    cada batida do meu coração é dedicada a você. Você é o melhor presente 
+                    que a vida poderia me dar.
+                </p>
+                <p class="final-texto">
+                    Obrigado por cada momento, cada risada, cada abraço e cada "eu te amo". 
+                    Conto os segundos para estar com você novamente.
+                </p>
+                <button class="btn-final" id="btn-para-sempre" onclick="dispararSurpresa()">
+                    Para sempre ❤️
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overlay de surpresa -->
+    <div id="surpresa-overlay" class="surpresa-overlay hidden">
+        <div class="surpresa-mensagem">
+            <div class="surpresa-hearts">💖💕💘</div>
+            <h2>Eu Te Amo Infinitamente!</h2>
+            <p>Você é o amor da minha vida, hoje e para sempre.</p>
+            <button class="btn-principal" onclick="fecharSurpresa()">Fechar</button>
+        </div>
+    </div>
+
+    <!-- ===== RODAPÉ ===== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-hearts">❤️ 💕 ❤️</div>
+            <p>Feito com ❤️ para Laroca e Pitoco</p>
+            <p class="footer-copy">Buteca e o mais pro — 2025</p>
+        </div>
+    </footer>
+
+    <!-- Botão Voltar ao Topo -->
+    <button id="btn-topo" class="btn-topo hidden" onclick="scrollToTop()" aria-label="Voltar ao topo">
+        <span>↑</span>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
